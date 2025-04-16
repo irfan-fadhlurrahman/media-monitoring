@@ -48,15 +48,15 @@ def get_raw_data_obs():
 
     return df
 
-def append_obs(df, object_name):
+def append_obs(df, object_name, col='news_url'):
     try:
         exist = obs_factory().read_object(object_name)
         df = pd.concat([df, exist]).reset_index(drop=True)
         df = (
-            df[~(df['news_url'].isnull())]
+            df[~(df[col].isnull())]
             .reset_index(drop=True)
-            .sort_values(by=['news_url', 'date_modified'], ascending=False)
-            .drop_duplicates(subset=['news_url'], keep='first')
+            .sort_values(by=[col, 'date_modified'], ascending=False)
+            .drop_duplicates(subset=[col], keep='first')
             .reset_index(drop=True)
         )
     except Exception:

@@ -110,12 +110,11 @@ def decode_google_news_link(url):
         return None
 
 ### GOOGLE NEWS EXTRACTOR
-def extract_google_news(keyword, selected_date, is_print=True):
+def extract_google_news(keyword, selected_date, lang="id", is_print=True):
     start = selected_date.strftime('%m/%d/%Y')
     end = (selected_date + timedelta(days=1)).strftime('%m/%d/%Y')
 
-    # googlenews = GoogleNews(lang='id')
-    googlenews = GoogleNews()
+    googlenews = GoogleNews(lang=lang)
     googlenews.set_time_range(start, end)
     googlenews.set_encode('utf-8')
     googlenews.get_news(keyword)

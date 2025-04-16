@@ -3,6 +3,7 @@ import time
 import random
 import os
 import re
+import time
 import pandas as pd
 import numpy as np
 import duckdb
@@ -136,6 +137,8 @@ def extract_google_news(keyword, selected_date, lang="id", is_print=True):
 
     if is_print:
         print(selected_date, 'SUCCESS', len(df), 'rows')
+    
+    time.sleep(1)
     return df
 
 def load_to_drive(df_list, keyword):

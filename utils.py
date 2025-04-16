@@ -97,9 +97,6 @@ def get_full_text(url):
         return extract(
             fetch_url(url),
             favor_precision=True,
-            # include_comments=False, 
-            # include_tables=False, 
-            # no_fallback=True
         )
     except Exception:
         return None

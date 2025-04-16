@@ -126,6 +126,7 @@ def extract_google_news(keyword, selected_date, is_print=True):
         return pd.DataFrame()
 
     df['date_created'] = get_current_date()
+    df['date_modified'] = get_current_date()
     df['start_date'] = selected_date
     df['end_date'] = selected_date + timedelta(days=1)
     df['keyword'] = keyword

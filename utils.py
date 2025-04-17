@@ -138,7 +138,6 @@ def extract_google_news(keyword, selected_date, lang="id", is_print=True):
     if is_print:
         print(selected_date, 'SUCCESS', len(df), 'rows')
     
-    time.sleep(1)
     return df
 
 def load_to_drive(df_list, keyword):

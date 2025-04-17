@@ -105,7 +105,7 @@ def get_full_text(url):
 ### GOOGLE NEWS URL DECODER
 def decode_google_news_link(url):
     try:
-        decoded_url = gnewsdecoder(url, interval=5)
+        decoded_url = gnewsdecoder(url, interval=2)
         return decoded_url["decoded_url"]
     except Exception:
         return None

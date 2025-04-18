@@ -101,6 +101,7 @@ def get_full_text(url):
         )
     except Exception:
         return None
+    time.sleep(2)
 
 ### GOOGLE NEWS URL DECODER
 def decode_google_news_link(url):

@@ -124,19 +124,19 @@ def extract_google_news_general(keyword, start, end, lang):
     df = pd.DataFrame(googlenews.results(sort=True))
     if df.empty:
         if is_print:
-            print(selected_date, 'FAILED')
+            print(end, 'FAILED')
         return pd.DataFrame()
 
     df['date_created'] = get_current_date()
     df['date_modified'] = get_current_date()
-    df['start_date'] = selected_date
-    df['end_date'] = selected_date + timedelta(days=1)
+    df['start_date'] = start
+    df['end_date'] = end
     df['keyword'] = keyword
 
     googlenews.clear()
     del googlenews
-    
-    print(selected_date, 'SUCCESS', len(df), 'rows')
+
+    print(end, 'SUCCESS', len(df), 'rows')
     
     return df
 

@@ -1,7 +1,3 @@
-ALL_KEYWORDS = list(set(
-    MINIMIZE_MACRO_KEYS + PERTUMBUHAN_EKONOMI + INFLASI + EXIM + INVESTASI
-))
-
 MINIMIZE_MACRO_KEYS = [
     'dolar as',
     'rupiah dolar',
@@ -285,3 +281,7 @@ EN_INVESTASI = [
     "investor sentiment",
     "financial market"
 ]
+
+ALL_KEYWORDS = list(set(
+    MINIMIZE_MACRO_KEYS + PERTUMBUHAN_EKONOMI + INFLASI + EXIM + INVESTASI
+))

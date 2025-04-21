@@ -112,6 +112,34 @@ def decode_google_news_link(url):
         return None
 
 ### GOOGLE NEWS EXTRACTOR
+def extract_google_news_general(keyword, start, end, lang):
+    start = start.strftime('%m/%d/%Y')
+    end = end.strftime('%m/%d/%Y')
+
+    googlenews = GoogleNews(lang=lang)
+    googlenews.set_time_range(start, end)
+    googlenews.set_encode('utf-8')
+    googlenews.get_news(keyword)
+
+    df = pd.DataFrame(googlenews.results(sort=True))
+    if df.empty:
+        if is_print:
+            print(selected_date, 'FAILED')
+        return pd.DataFrame()
+
+    df['date_created'] = get_current_date()
+    df['date_modified'] = get_current_date()
+    df['start_date'] = selected_date
+    df['end_date'] = selected_date + timedelta(days=1)
+    df['keyword'] = keyword
+
+    googlenews.clear()
+    del googlenews
+    
+    print(selected_date, 'SUCCESS', len(df), 'rows')
+    
+    return df
+
 def extract_google_news(keyword, selected_date, lang="id", is_print=True):
     start = selected_date.strftime('%m/%d/%Y')
     end = (selected_date + timedelta(days=1)).strftime('%m/%d/%Y')
